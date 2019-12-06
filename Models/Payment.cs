@@ -13,6 +13,7 @@ namespace Api_BackEnd.Models
         [Required]
         public Guid invoice_id { get; set; }
         [Required]
+        [Range(1, 99999999.99)]
         public decimal amount { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using Api_BackEnd.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Api_BackEnd.Controllers
 {
@@ -89,6 +90,11 @@ namespace Api_BackEnd.Controllers
             var _products = data.lines.ToArray();
             foreach (Product p in _products)
             {
+                if (p.currency.ToUpper() != "CRC")
+                {
+                    return GetMessage("Only local currency");
+                }
+
                 p.invoice_id = _invoice_id;
                 var _subtotal = (p.price * p.quantity);
                 var _discount_total = (_subtotal * p.discount_rate / 100);
@@ -130,6 +136,12 @@ namespace Api_BackEnd.Controllers
             await _context.SaveChangesAsync();
 
             return _invoive;
+        }
+
+
+        public static BadRequestObjectResult GetMessage(string message)
+        {
+            return new BadRequestObjectResult(message);
         }
     }
 }
