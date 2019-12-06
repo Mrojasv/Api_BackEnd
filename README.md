@@ -1,10 +1,14 @@
 
 # Api Rest Net Core
 
-<p align="left">Api Rest en .Net Core, un ejemplo practico con Entity Framework InMemory, para crear una factura, calcular el total a pagar, recibir los pagos y consultar todas las facturas</p>
-<p align="right">
-  <a href="https://dotnet.microsoft.com/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/490px-.NET_Core_Logo.svg.png" width="320" alt="Net Core" /></a>
-</p>
+<table>
+  <tr>
+    <td><p align="center">Api Rest en .Net Core, un ejemplo practico con Entity Framework InMemory, para crear una factura, calcular el total a pagar, recibir los pagos y consultar todas las facturas</p>
+    </td>
+    <td>
+    <a href="https://dotnet.microsoft.com/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/490px-.NET_Core_Logo.svg.png" width="320" alt="Net Core" /></a></td>
+  </tr>
+</table>
 
 ## Herramientas
 - [Github](https://github.com/)
@@ -28,9 +32,10 @@ Para lanzar el proyecto podes hacerlo de la siguiente manera:
 
 Crear un Invoice
 
-Metodo: POST
-URL: api
+-Operación: POST
+-URL: api/invoice
 
+Body
 ```Json
 {
     "rojo":"#f00",
