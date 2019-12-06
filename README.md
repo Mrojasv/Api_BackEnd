@@ -1,8 +1,7 @@
 
-# Api Rest Net Core
-|   |  |
+| Api Rest Net Core  |  |
 | ------------- | ------------- |
-| Api Rest .Net Core, un ejemplo practico con Entity Framework InMemory, para crear una factura, calcular el total a pagar, recibir los pagos y consultar todas las facturas | <a href="https://dotnet.microsoft.com/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/490px-.NET_Core_Logo.svg.png" width="320" alt="Net Core" /></a> |
+| Api Rest .Net Core, un ejemplo práctico con Entity Framework InMemory, para crear una factura, calcular el total a pagar, recibir los pagos y consultar todas las facturas | <a href="https://dotnet.microsoft.com/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/490px-.NET_Core_Logo.svg.png" width="320" alt="Net Core" /></a> |
 
 ## Herramientas
 - [Github](https://github.com/)
@@ -18,26 +17,12 @@ Para usar el código solo hace falta clonar este repositorio:
 
 y luego hacer doble click en `Api_BackEnd.sln` (con Visual Studio instalado).
 
-Para lanzar el proyecto podes hacerlo de la siguiente manera:
+Para lanzar el proyecto puedes hacerlo de la siguiente manera:
 
 1. Click derecho en el proyecto > Establecer proyecto por defecto y luego darle al play (botón verde)
 
 ## Uso del Api
 
-Crear un Invoice
+Utilice el siguiente link de Postman para utilizar este Api:
 
-- Operación: POST
-- URL: ./api/invoice
-
-Body
-```Json
-{
-    "rojo":"#f00",
-    "verde":"#0f0",
-    "azul":"#00f",
-    "cyan":"#0ff",
-    "magenta":"#f0f",
-    "amarillo":"#ff0",
-    "negro":"#000"
-}
-```
+    https://documenter.getpostman.com/view/3721507/SWE55yaW
