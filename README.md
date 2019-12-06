@@ -1,9 +1,7 @@
 
 | Api Rest Net Core  |  |
 | ------------- | ------------- |
-| API REST .Net Core, ejemplo práctico con Entity Framework InMemory, crear una factura para un cliente con sus respectivos artículos, calcula los total a pagar y consultar todas las facturas generadas, además se pueden realizar los pagos a las facturas generadas.
-
-Especificación técnica: consta de dos endpoints, uno para facturas api/invoice y otro para pagos api/payment, no requiere coneccion a base de datos, por lo que administra los datos en memoria durante el tiempo de ejecución, es multiplataforma por lo tanto se puede ejecutar en tanto windows como en Mac OS.
+| API REST .Net Core, ejemplo práctico con Entity Framework InMemory, crear una factura para un cliente con sus respectivos artículos, calcula los total a pagar y consultar todas las facturas generadas, además se pueden realizar los pagos a las facturas generadas. Especificación técnica: consta de dos endpoints, uno para facturas api/invoice y otro para pagos api/payment, no requiere coneccion a base de datos, por lo que administra los datos en memoria durante el tiempo de ejecución, es multiplataforma por lo tanto se puede ejecutar en tanto windows como en Mac OS.
  | <a href="https://dotnet.microsoft.com/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/490px-.NET_Core_Logo.svg.png" width="320" alt="Net Core" /></a> |
 
 ## Herramientas
