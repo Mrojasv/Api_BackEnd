@@ -8217,11 +8217,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\ProofConcept\\Api_BackEnd\\Api_BackEnd.csproj",
+      "projectUniqueName": "H:\\ProofConcept\\Api_BackEnd_InMemories\\Api_BackEnd.csproj",
       "projectName": "Api_BackEnd",
-      "projectPath": "H:\\ProofConcept\\Api_BackEnd\\Api_BackEnd.csproj",
+      "projectPath": "H:\\ProofConcept\\Api_BackEnd_InMemories\\Api_BackEnd.csproj",
       "packagesPath": "C:\\Users\\mrojas\\.nuget\\packages\\",
-      "outputPath": "H:\\ProofConcept\\Api_BackEnd\\obj\\",
+      "outputPath": "H:\\ProofConcept\\Api_BackEnd_InMemories\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mrojas\\AppData\\Roaming\\NuGet\\NuGet.Config",

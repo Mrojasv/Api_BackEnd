@@ -19,49 +19,44 @@ namespace Api_BackEnd.Controllers
             _context = context;
         }
 
-        //// GET: api/Payment
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
         // GET: api/Payment/5
         [HttpGet("{id}", Name = "GetPayment")]
-        public async Task<ActionResult<PaymentInvoice>> GetPayment(Guid id)
+        public async Task<ActionResult<Payment>> GetPayment(Guid id)
         {
-            var PaymentData = await _context.Payments.FindAsync(id);
+            var _payment = await _context.Payments.FindAsync(id);
 
-            if (PaymentData == null)
+            if (_payment == null)
             {
                 return NotFound();
             }
 
-            return PaymentData;
+            return _payment;
         }
 
         // POST: api/Payment
         [HttpPost]
-        public async Task<ActionResult<PaymentInvoice>> PostPayment(PaymentInvoice data)
+        public async Task<ActionResult<Payment>> PostPayment(Payment data)
         {
+            var _invoive = await _context.Invoices.FindAsync(data.invoice_id);
+            if (_invoive == null)
+            {
+                return NotFound();
+            }
+
+            if (_invoive.balance < data.amount)
+            {
+                return BadRequest();
+            }
+
+            _invoive.balance = (_invoive.balance - data.amount);
+
             data.payment_id = Guid.NewGuid();
             _context.Payments.Add(data);
+
             await _context.SaveChangesAsync();
 
-            //return CreatedAtAction("GetPayment", new { id = data.payment_id }, data);
             return CreatedAtAction(nameof(GetPayment), new { id = data.payment_id }, data);
         }
 
-        //// PUT: api/Payment/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE: api/ApiWithActions/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

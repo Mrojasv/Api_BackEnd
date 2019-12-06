@@ -10,13 +10,14 @@ namespace Api_BackEnd.Models
         }
 
         public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<Product> Products { get; set; }
         public DbSet<Client> Clients { get; set; }
-        public DbSet<PaymentInvoice> Payments { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Invoice>()
-        //        .HasKey(c => c.invoice_id);
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .HasKey(c => new { c.invoice_id ,c.product});
+        }
     }
 }
