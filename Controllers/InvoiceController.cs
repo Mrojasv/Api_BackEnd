@@ -49,7 +49,7 @@ namespace Api_BackEnd.Controllers
                 _invoicesResponse.Add(_response);
             }
 
-            return _invoicesResponse;
+            return Ok(new { response = _invoicesResponse });
         }
 
         // GET: api/Invoice/5

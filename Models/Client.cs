@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Api_BackEnd.Models
@@ -12,6 +13,7 @@ namespace Api_BackEnd.Models
         [Key]
         [Display(Name = "invoiceid", AutoGenerateField = true)]
         [Column("invoice")]
+        [JsonIgnore]
         public Guid invoice_id { get; set; }
         [Required]
         [StringLength(12, MinimumLength = 9, ErrorMessage = "id cannot be longer than 12 characters.")]

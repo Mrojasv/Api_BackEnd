@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Api_BackEnd.Models
@@ -12,6 +13,7 @@ namespace Api_BackEnd.Models
     {
         [Display(Name = "invoiceid", AutoGenerateField = true)]
         [Column("invoice")]
+        [JsonIgnore]
         public Guid invoice_id { get; set; }
 
         [Key]
