@@ -1,7 +1,8 @@
+[logo]: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/490px-.NET_Core_Logo.svg.png ".Net Core"
 
 | Api Rest Net Core  |  |
 | ------------- | ------------- |
-| API REST .Net Core, ejemplo práctico con Entity Framework InMemory, crear una factura para un cliente con sus respectivos artículos, calcula los total a pagar y consultar todas las facturas generadas, además se pueden realizar los pagos a las facturas generadas. Especificación técnica: consta de dos endpoints, uno para facturas api/invoice y otro para pagos api/payment, no requiere coneccion a base de datos, por lo que administra los datos en memoria durante el tiempo de ejecución, es multiplataforma por lo tanto se puede ejecutar en tanto windows como en Mac OS. | <a href="https://dotnet.microsoft.com/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/490px-.NET_Core_Logo.svg.png" width="320" alt="Net Core" /></a> |
+| <p>API REST .Net Core, ejemplo práctico con Entity Framework InMemory, crear una factura para un cliente con sus respectivos artículos, calcula los total a pagar y consultar todas las facturas generadas, además se pueden realizar los pagos a las facturas generadas.</p> <p>Especificación técnica: consta de dos endpoints, uno para facturas api/invoice y otro para pagos api/payment, no requiere coneccion a base de datos, por lo que administra los datos en memoria durante el tiempo de ejecución, es multiplataforma por lo tanto se puede ejecutar en tanto windows como en Mac OS.<p> | ![alt text][logo] |
 
 ## Herramientas
 - [Github](https://github.com/)
@@ -13,7 +14,7 @@
 
 Para usar el código solo hace falta clonar este repositorio:
 
-    https://github.com/Mrojasv/Api_BackEnd.git
+[https://github.com/Mrojasv/Api_BackEnd.git](https://github.com/Mrojasv/Api_BackEnd.git)
 
 y luego hacer doble click en `Api_BackEnd.sln` (con Visual Studio instalado).
 
@@ -25,4 +26,4 @@ Para lanzar el proyecto puedes hacerlo de la siguiente manera:
 
 Utilice el siguiente link de Postman para utilizar este Api:
 
-    https://documenter.getpostman.com/view/3721507/SWE55yaW
+[https://documenter.getpostman.com/view/3721507/SWE55yaW](https://documenter.getpostman.com/view/3721507/SWE55yaW)
