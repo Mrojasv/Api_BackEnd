@@ -17,7 +17,7 @@ namespace Api_BackEnd.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>()
-                .HasKey(c => new { c.invoice_id ,c.product});
+                .HasKey(c => new { c.invoice_id, c.product });
         }
     }
 }

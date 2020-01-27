@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Api_BackEnd.Models;
+using Api_BackEnd.Services;
+using Api_BackEnd.Views;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,22 +18,24 @@ namespace Api_BackEnd.Controllers
     {
 
         private readonly InvoiceContent _context;
+        private readonly InvoiceServices _service;
 
         public InvoiceController(InvoiceContent context)
         {
             _context = context;
+            _service = new InvoiceServices(context);
         }
 
         // GET: api/Invoice
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<InvoiceResponse>>> GetInvoices()
+        public async Task<ActionResult<IEnumerable<InvoiceApi>>> GetInvoices()
         {
             var _invoices = await _context.Invoices.ToListAsync();
-            var _invoicesResponse = new List<InvoiceResponse>();
+            var _invoicesResponse = new List<InvoiceApi>();
 
             foreach (Invoice i in _invoices)
             {
-                var _response = new InvoiceResponse();
+                var _response = new InvoiceApi();
                 var _client = await _context.Clients.FindAsync(i.invoice_id);
                 var _products = await _context.Products.Where(w => w.invoice_id == i.invoice_id).ToArrayAsync();
                 var _payments = await _context.Payments.Where(w => w.invoice_id == i.invoice_id).ToArrayAsync();
@@ -54,7 +58,7 @@ namespace Api_BackEnd.Controllers
 
         // GET: api/Invoice/5
         [HttpGet("{id}", Name = "GetInvoice")]
-        public async Task<ActionResult<InvoiceResponse>> GetInvoice(Guid id)
+        public async Task<ActionResult<InvoiceApi>> GetInvoice(Guid id)
         {
             var _invoive = await _context.Invoices.FindAsync(id);
             if (_invoive == null)
@@ -66,7 +70,7 @@ namespace Api_BackEnd.Controllers
             var _products = await _context.Products.Where(w => w.invoice_id == id).ToArrayAsync();
             var _payments = await _context.Payments.Where(w => w.invoice_id == id).ToArrayAsync();
 
-            var result = new InvoiceResponse();
+            var result = new InvoiceApi();
             result.invoice_id = _invoive.invoice_id;
             result.lines = _products;
             result.client = _client;
@@ -82,38 +86,10 @@ namespace Api_BackEnd.Controllers
 
         // POST: api/Invoice
         [HttpPost]
-        public async Task<ActionResult<Invoice>> PostInvoice(InvoiceRequest data)
+        public async Task<ActionResult<Invoice>> PostInvoice([FromBody] InvoiceRequest data)
         {
-            var _invoice_id = Guid.NewGuid();
-            var _invoice = new Invoice { invoice_id = _invoice_id };
-
-            var _products = data.lines.ToArray();
-            foreach (Product p in _products)
-            {
-                if (p.currency.ToUpper() != "CRC")
-                {
-                    return GetMessage("Only local currency");
-                }
-
-                p.invoice_id = _invoice_id;
-                var _subtotal = (p.price * p.quantity);
-                var _discount_total = (_subtotal * p.discount_rate / 100);
-                var _tax_total = ((_subtotal- _discount_total) * p.tax_rate / 100);
-
-                _invoice.subtotal = _invoice.subtotal + _subtotal;
-                _invoice.tax_total = _invoice.tax_total + _tax_total;
-                _invoice.discount_total = _invoice.discount_total + _discount_total;
-                _invoice.total = _invoice.balance + ((_subtotal - _discount_total) + _tax_total);
-                _invoice.balance = _invoice.total;
-            }
-            data.client.invoice_id = _invoice_id;
-
-            _context.Invoices.Add(_invoice);
-            _context.Products.AddRange(_products);
-            _context.Clients.Add(data.client);
-            await _context.SaveChangesAsync();
-
-            return _invoice;
+            var result = await _service.CreateInvoice(data);
+            return result;
         }
 
         // DELETE: api/ApiWithActions/5
@@ -138,10 +114,5 @@ namespace Api_BackEnd.Controllers
             return _invoive;
         }
 
-
-        public static BadRequestObjectResult GetMessage(string message)
-        {
-            return new BadRequestObjectResult(message);
-        }
     }
 }

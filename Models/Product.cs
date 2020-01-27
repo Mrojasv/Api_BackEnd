@@ -29,7 +29,8 @@ namespace Api_BackEnd.Models
         public decimal tax_rate { get; set; }
         [Range(0, 100)]
         public decimal discount_rate { get; set; }
-        [Remote(action: "VerifyCurrency", controller: "Validator", ErrorMessage= "Only local currency.")]
+        [Required]
+        [StringLength(3, MinimumLength = 3, ErrorMessage = "currency must be 3 characters.")]
         public string currency { get; set; }
     }
 }
